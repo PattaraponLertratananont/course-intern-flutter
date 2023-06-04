@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:course_intern/todo.dart';
 import 'package:flutter/material.dart';
+
+import 'widgets/button.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +20,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
+      routes: {
+        "/todo": (context) => TodoPage(),
+      },
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -60,25 +66,11 @@ class _MyHomePageState extends State<MyHomePage> {
               textAlign: TextAlign.center,
             ),
             Expanded(child: Image.asset("images/check-list.png")),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xff3E4ADE),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(40),
-                ),
-              ),
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.symmetric(vertical: 24),
-                child: Text(
-                  "Continue",
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
+            Button(
+              label: "Continue",
+              onPressed: () {
+                Navigator.of(context).pushNamed("/todo");
+              },
             )
           ],
         ),
